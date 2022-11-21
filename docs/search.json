@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "workshop",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  },
+  {
     "objectID": "setup.html",
     "href": "setup.html",
     "title": "환경설정",
@@ -12,12 +26,5 @@
     "title": "환경설정",
     "section": "quarto render",
     "text": "quarto render\n\n$ quarto.cmd render\n\n.....\n\n$ tree -d\n.\n|-- _site\n|   `-- site_libs\n|       |-- bootstrap\n|       |-- clipboard\n|       |-- quarto-html\n|       |-- quarto-nav\n|       `-- quarto-search\n|-- docs\n|   `-- site_libs\n|       |-- bootstrap\n|       |-- clipboard\n|       |-- quarto-html\n|       |-- quarto-nav\n|       `-- quarto-search\n`-- image\n\n15 directories\n\n$ rm -rf _site"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "workshop",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
   }
 ]

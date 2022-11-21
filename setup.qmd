@@ -163,5 +163,18 @@ Branch 'main' set up to track remote branch 'main' from 'origin'.
 
 ![](image/github_pages.png)
 
+# `quarto` 웹사이트
 
+![](image/quarto_website_deployment.png)
+
+:::{.callout-warning}
+
+- 바로가기: <https://r2bit.com/workshop/>
+
+:::
+
+
+```{=html}
+<iframe class="stretch" data-src="https://r2bit.com/workshop/"></iframe>
+```
 
