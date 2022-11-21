@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "setup.html",
+    "href": "setup.html",
+    "title": "환경설정",
+    "section": "",
+    "text": "$ tree\n.\n|-- _quarto.yml\n|-- _site\n|   |-- about.html\n|   |-- index.html\n|   |-- search.json\n|   |-- site_libs\n|   |   |-- bootstrap\n|   |   |   |-- bootstrap-icons.css\n|   |   |   |-- bootstrap-icons.woff\n|   |   |   |-- bootstrap.min.css\n|   |   |   `-- bootstrap.min.js\n|   |   |-- clipboard\n|   |   |   `-- clipboard.min.js\n|   |   |-- quarto-html\n|   |   |   |-- anchor.min.js\n|   |   |   |-- popper.min.js\n|   |   |   |-- quarto-syntax-highlighting.css\n|   |   |   |-- quarto.js\n|   |   |   |-- tippy.css\n|   |   |   `-- tippy.umd.min.js\n|   |   |-- quarto-nav\n|   |   |   |-- headroom.min.js\n|   |   |   `-- quarto-nav.js\n|   |   `-- quarto-search\n|   |       |-- autocomplete.umd.js\n|   |       |-- fuse.min.js\n|   |       `-- quarto-search.js\n|   `-- styles.css\n|-- about.qmd\n|-- image\n|   |-- github_repo.png\n|   |-- quarto_init.png\n|   `-- quarto_website.png\n|-- index.qmd\n|-- styles.css\n`-- workshop.Rproj\n\n8 directories, 28 files"
+  },
+  {
+    "objectID": "setup.html#quarto-render",
+    "href": "setup.html#quarto-render",
+    "title": "환경설정",
+    "section": "quarto render",
+    "text": "quarto render\n\n$ quarto.cmd render\n\n.....\n\n$ tree -d\n.\n|-- _site\n|   `-- site_libs\n|       |-- bootstrap\n|       |-- clipboard\n|       |-- quarto-html\n|       |-- quarto-nav\n|       `-- quarto-search\n|-- docs\n|   `-- site_libs\n|       |-- bootstrap\n|       |-- clipboard\n|       |-- quarto-html\n|       |-- quarto-nav\n|       `-- quarto-search\n`-- image\n\n15 directories\n\n$ rm -rf _site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "workshop",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  }
+]

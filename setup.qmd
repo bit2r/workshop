@@ -1,0 +1,167 @@
+---
+title: "환경설정"
+format: html
+theme: solar
+---
+
+
+
+# 프로젝트 구조
+
+
+```
+$ tree
+.
+|-- _quarto.yml
+|-- _site
+|   |-- about.html
+|   |-- index.html
+|   |-- search.json
+|   |-- site_libs
+|   |   |-- bootstrap
+|   |   |   |-- bootstrap-icons.css
+|   |   |   |-- bootstrap-icons.woff
+|   |   |   |-- bootstrap.min.css
+|   |   |   `-- bootstrap.min.js
+|   |   |-- clipboard
+|   |   |   `-- clipboard.min.js
+|   |   |-- quarto-html
+|   |   |   |-- anchor.min.js
+|   |   |   |-- popper.min.js
+|   |   |   |-- quarto-syntax-highlighting.css
+|   |   |   |-- quarto.js
+|   |   |   |-- tippy.css
+|   |   |   `-- tippy.umd.min.js
+|   |   |-- quarto-nav
+|   |   |   |-- headroom.min.js
+|   |   |   `-- quarto-nav.js
+|   |   `-- quarto-search
+|   |       |-- autocomplete.umd.js
+|   |       |-- fuse.min.js
+|   |       `-- quarto-search.js
+|   `-- styles.css
+|-- about.qmd
+|-- image
+|   |-- github_repo.png
+|   |-- quarto_init.png
+|   `-- quarto_website.png
+|-- index.qmd
+|-- styles.css
+`-- workshop.Rproj
+
+8 directories, 28 files
+```
+
+
+# `_quarto.yml` 파일
+
+`GitHub Pages` 정적 웹사이트(static website) 구축을 위한 환경설정
+
+```{r}
+#| eval: false
+#| code-line-numbers: "1-3"
+
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "workshop"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - setup.qmd      
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+```
+
+## `quarto render` 
+
+```{r}
+#| eval: false
+$ quarto.cmd render
+
+.....
+
+$ tree -d
+.
+|-- _site
+|   `-- site_libs
+|       |-- bootstrap
+|       |-- clipboard
+|       |-- quarto-html
+|       |-- quarto-nav
+|       `-- quarto-search
+|-- docs
+|   `-- site_libs
+|       |-- bootstrap
+|       |-- clipboard
+|       |-- quarto-html
+|       |-- quarto-nav
+|       `-- quarto-search
+`-- image
+
+15 directories
+
+$ rm -rf _site
+
+```
+
+# 로컬 Git 과 원격 GitHub 연결
+
+
+로컬 컴퓨터에서 작업을 한 후 `git add .` &rarr; `git commit -m"첫 커밋"` Git 작업흐름에 맞춰 작업을 한 후에 프라이빗 사설 저장소의 경우 PAT(Personal Assess Token) 을 사용해서 다음 명령어로 연결하는 하고 그렇지 않고 공공 퍼블릭으로 설정한 경우 다음 명령
+
+```{r}
+
+```
+
+`git remote add origin git@github.com:bit2r/workshop.git`
+
+저장소와 로컬 저장소는 모두 각자 Git History가 달라 이를 합치하는 과정을 거쳐야 한다.
+
+# 원격 저장소 작업 내용 로컬 저장소로 가져오기
+
+```
+git pull origin main --allow-unrelated-histories
+```
+
+# 로컬 작업 내용 충돌(conflict) 해소 후 원격저장소로 내보내기
+
+```
+git push --set-upstream origin main
+```
+
+# 로컬 작업 내용 충돌(conflict) 해소 후 원격저장소로 내보내기
+
+```
+$ git pull origin main --allow-unrelated-histories
+From github.com:bit2r/workshop
+ * branch            main       -> FETCH_HEAD
+
+statkclee@PC-AT-HOME MINGW64 /c/code_states/workshop (main)
+$ git remote
+origin
+
+$ git remote -v
+origin  git@github.com:bit2r/workshop.git (fetch)
+origin  git@github.com:bit2r/workshop.git (push)
+
+$ git push --set-upstream origin main
+Everything up-to-date
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+```
+
+# GitHub Pages 설정
+
+
+![](image/github_pages.png)
+
+
+
