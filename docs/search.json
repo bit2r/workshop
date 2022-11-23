@@ -1,17 +1,10 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "workshop",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "objectID": "index.html#quarto-워크샵",
+    "href": "index.html#quarto-워크샵",
+    "title": "빛에듀 워크샵",
+    "section": "Quarto 워크샵",
+    "text": "Quarto 워크샵\n한국 R 사용자회에서는 통계패키지를 사용하고 있는 다양한 사용자의 요구를 충족시키기 위해 다양한 기능이 포함된 소프트웨어, 콘텐츠, 데이터, 커뮤니티를 운영하고 있습니다. 서울특별시교육청 혁신교육과제의 일환으로 데이터 문해력과 디지털 글쓰기를 주제로 대면 컨퍼런스를 아래와 같이 개최하게 되었습니다.\n\n일시: 2022년 11월 26일 (토) 14:00 ~ 18:00\n장소: 성균관대학교 경제관 32211 호\n참석자: 디지털 교육 관심있으신 선생님, 학부모, 학생, 개발자\n웹사이트: https://r2bit.com/sen/"
   },
   {
     "objectID": "setup.html",
@@ -25,7 +18,7 @@
     "href": "setup.html#quarto-render",
     "title": "환경설정",
     "section": "quarto render",
-    "text": "quarto render\n_quarto.yml은 콘텐츠 즉 .qmd파일을 어떤 형태로 꿰어야 되는지 지정한 정보를 담고 있다면 quarto render 명령어 그 이전에 quarto preview 명령어는 개발자나 저작자가 저작한 저작물을 기계가 컴파일하는 과정을 담고 있다. 윈도우의 경우 quarto.cmd 맥/리눅스는 quarto 명령어로 해당 작업을 수행하게 된다.\n\n상기 컴파일 작업을 통해 docs 디렉토리가 새로 생겼으며 정적 웹사이트를 기계인식 가능한 형태로 변환된 것을 확인할 수 있다.\n\n$ quarto.cmd render\n\n.....\n\n$ tree -d\n.\n|-- _site\n|   `-- site_libs\n|       |-- bootstrap\n|       |-- clipboard\n|       |-- quarto-html\n|       |-- quarto-nav\n|       `-- quarto-search\n|-- docs\n|   `-- site_libs\n|       |-- bootstrap\n|       |-- clipboard\n|       |-- quarto-html\n|       |-- quarto-nav\n|       `-- quarto-search\n`-- image\n\n15 directories\n\n$ rm -rf _site\n\n로컬에서 docs/ 디렉토리로 들어가서 index.html 파일을 더블클릭하게 되면 웹브라이져 크롬에서 웹사이트가 정상 제작된 것을 확인할 수 있다. 이제 로컬 컴퓨터에서 제작한 웹사이트를 본인 뿐만 아니라 인터넷 접속이 가능한 다른 분들도 데이터 과학 결과물을 공유할 수 있도록 외부에 배포하는 과정을 살펴보자."
+    "text": "quarto render\n_quarto.yml은 콘텐츠 즉 .qmd파일을 어떤 형태로 꿰어야 되는지 지정한 정보를 담고 있다면 quarto render 명령어 그 이전에 quarto preview 명령어는 개발자나 저작자가 저작한 저작물을 기계가 컴파일하는 과정을 담고 있다. 윈도우의 경우 quarto.cmd 맥/리눅스는 quarto 명령어로 해당 작업을 수행하게 된다.\n\n\n\n\n\n상기 컴파일 작업을 통해 docs 디렉토리가 새로 생겼으며 정적 웹사이트를 기계인식 가능한 형태로 변환된 것을 확인할 수 있다.\n\n$ quarto.cmd render\n\n.....\n\n$ tree -d\n.\n|-- _site\n|   `-- site_libs\n|       |-- bootstrap\n|       |-- clipboard\n|       |-- quarto-html\n|       |-- quarto-nav\n|       `-- quarto-search\n|-- docs\n|   `-- site_libs\n|       |-- bootstrap\n|       |-- clipboard\n|       |-- quarto-html\n|       |-- quarto-nav\n|       `-- quarto-search\n`-- image\n\n15 directories\n\n$ rm -rf _site\n\n로컬에서 docs/ 디렉토리로 들어가서 index.html 파일을 더블클릭하게 되면 웹브라이져 크롬에서 웹사이트가 정상 제작된 것을 확인할 수 있다. 이제 로컬 컴퓨터에서 제작한 웹사이트를 본인 뿐만 아니라 인터넷 접속이 가능한 다른 분들도 데이터 과학 결과물을 공유할 수 있도록 외부에 배포하는 과정을 살펴보자."
   },
   {
     "objectID": "setup.html#github-저장소",

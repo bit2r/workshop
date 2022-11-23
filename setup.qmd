@@ -2,6 +2,9 @@
 title: "환경설정"
 format: html
 theme: solar
+filters:
+   - lightbox
+lightbox: auto
 ---
 
 ![](image/quarto_workflow.png)

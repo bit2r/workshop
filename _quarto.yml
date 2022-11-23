@@ -2,15 +2,51 @@ project:
   type: website
   output-dir: docs
 
+lang: kr
+
 website:
-  title: "workshop"
+  title: "빛에듀 워크샵"
+  repo-url: https://github.com/bit2r/workshop
+  repo-actions: [edit, issue]  
+  reader-mode: true  
+  page-footer: 
+    left: "Copyright 2022, 한국R사용자회"   
+  sidebar:
+    tools:
+      - icon: google
+        href: http://r2bit.com/
+      - icon: facebook
+        href: https://www.facebook.com/groups/tidyverse
+      - icon: github
+        menu:
+          - text: "소스코드"
+            url:  https://github.com/bit2r/workshop
+          - text: "이슈"
+            url:  https://github.com/bit2r/workshop/issues
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - about.qmd
-      - setup.qmd      
-
+        text: "홈"
+      - text: "Quarto"
+        menu:
+        - href: https://r2bit.com/quarto/quarto_about.html
+          text: "Quarto 소개"
+        - href: https://r2bit.com/quarto/quarto_install.html
+          text: "Quarto 설치/출판"
+        - href: setup.qmd
+          text: 워크샵 실습
+      - text: "사례"
+        menu:
+        - href: https://r2bit.com/quarto/quarto_blog.html
+          text: "블로그"
+        - href: https://r2bit.com/bitBook/
+          text: "전자책"
+        - href: https://r2bit.com/bitSlide/
+          text: "PPT 파워포인트"
+        - href: https://pkgs.rstudio.com/flexdashboard/
+          text: "대쉬보드"
+        - text: "..."  
+          
 format:
   html:
     theme: cosmo
