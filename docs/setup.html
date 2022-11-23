@@ -174,10 +174,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#quarto-render" id="toc-quarto-render" class="nav-link" data-scroll-target="#quarto-render"><code>quarto render</code></a></li>
   </ul></li>
-  <li><a href="#로컬-git-과-원격-github-연결" id="toc-로컬-git-과-원격-github-연결" class="nav-link" data-scroll-target="#로컬-git-과-원격-github-연결">로컬 Git 과 원격 GitHub 연결</a></li>
-  <li><a href="#원격-저장소-작업-내용-로컬-저장소로-가져오기" id="toc-원격-저장소-작업-내용-로컬-저장소로-가져오기" class="nav-link" data-scroll-target="#원격-저장소-작업-내용-로컬-저장소로-가져오기">원격 저장소 작업 내용 로컬 저장소로 가져오기</a></li>
-  <li><a href="#로컬-작업-내용-충돌conflict-해소-후-원격저장소로-내보내기" id="toc-로컬-작업-내용-충돌conflict-해소-후-원격저장소로-내보내기" class="nav-link" data-scroll-target="#로컬-작업-내용-충돌conflict-해소-후-원격저장소로-내보내기">로컬 작업 내용 충돌(conflict) 해소 후 원격저장소로 내보내기</a></li>
-  <li><a href="#로컬-작업-내용-충돌conflict-해소-후-원격저장소로-내보내기-1" id="toc-로컬-작업-내용-충돌conflict-해소-후-원격저장소로-내보내기-1" class="nav-link" data-scroll-target="#로컬-작업-내용-충돌conflict-해소-후-원격저장소로-내보내기-1">로컬 작업 내용 충돌(conflict) 해소 후 원격저장소로 내보내기</a></li>
+  <li><a href="#git-과-github-저장소" id="toc-git-과-github-저장소" class="nav-link" data-scroll-target="#git-과-github-저장소">Git 과 GitHub 저장소</a>
+  <ul class="collapse">
+  <li><a href="#github-저장소" id="toc-github-저장소" class="nav-link" data-scroll-target="#github-저장소">GitHub 저장소</a></li>
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><code>Git</code></a>
+  <ul class="collapse">
+  <li><a href="#로컬과-원격-연결" id="toc-로컬과-원격-연결" class="nav-link" data-scroll-target="#로컬과-원격-연결">로컬과 원격 연결</a></li>
+  <li><a href="#원격-저장소-가져오기" id="toc-원격-저장소-가져오기" class="nav-link" data-scroll-target="#원격-저장소-가져오기">원격 저장소 가져오기</a></li>
+  <li><a href="#원격-저장소-내보내기" id="toc-원격-저장소-내보내기" class="nav-link" data-scroll-target="#원격-저장소-내보내기">원격 저장소 내보내기</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#github-pages-설정" id="toc-github-pages-설정" class="nav-link" data-scroll-target="#github-pages-설정">GitHub Pages 설정</a></li>
   <li><a href="#quarto-웹사이트" id="toc-quarto-웹사이트" class="nav-link" data-scroll-target="#quarto-웹사이트"><code>quarto</code> 웹사이트</a></li>
   </ul>
@@ -203,8 +209,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<p><img src="image/quarto_workflow.png" class="img-fluid"></p>
+<p>Quarto 기반 데이터 과학 작업흐름은 프로그래밍 언어 뿐만 아니라 통합개발환경(IDE), 다양한 문서 양식과 최종적으로 배포하는 환경까지 아우르게 된다. 예를 들어 데이터 과학 주 언어로 R을 선정하고, 통합개발환경으로 RStudio를 선택하고, 산출물을 웹사이트로 특정하고 이를 배포하는 서비스로 GitHub Pages를 선정하는 것이다.</p>
 <section id="프로젝트-구조" class="level1">
 <h1>프로젝트 구조</h1>
+<p>GitHub Pages를 통해 정적 웹사이트 서비스를 통해 데이터 과학 산출물을 공유하고자 하는 경우 통합개발환경 RStudio에서 <code>New Project...</code> → <code>Create Project</code> 에서 <code>New Directory</code> 를 선정하고 → <code>Project Type</code>에서 <code>Quarto Website</code>를 특정하고 마지막으로 <code>Create Quarto Website</code> 디렉토리 명칭과 프로젝트가 위치할 디렉토리 위치를 확인하고 엔진을 비롯한 각종 선택사항을 지정한다.</p>
+<p><img src="image/quarto_website.png" class="img-fluid"></p>
+<p>상기 작업결과 예를 들어, <code>workshop</code> 디렉토리에 다음과 같은 기본 설정값들이 쫙 깔리게 된다.</p>
 <pre><code>$ tree
 .
 |-- _quarto.yml
@@ -245,32 +256,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 `-- workshop.Rproj
 
 8 directories, 28 files</code></pre>
+<p>상기 ㄷ렉토리에서 중요한 것은 <code>_quarto.yml</code> 파일에 특히 관심을 둬야한다. 즉, <code>_quarto.yml</code> 파일이 Quarto 웹사이트를 비롯한 각종 문서의 뼈대에 해당되는 사항을 모두 담고 있기 때문이다.</p>
 </section>
 <section id="quarto.yml-파일" class="level1">
 <h1><code>_quarto.yml</code> 파일</h1>
-<p><code>GitHub Pages</code> 정적 웹사이트(static website) 구축을 위한 환경설정</p>
+<p><code>GitHub Pages</code> 정적 웹사이트(static website) 구축을 위한 환경설정을 다음과 같이 수정한다. <code>output-dir: docs</code> 설정을 특히 유념한다. 나중에 <code>GitHub Pages</code> 를 설정할 때 꼭 필요한 사항이다. 기존 디폴트 설정으로 되어 있는 <code>_site</code> 디렉토리를 <code>docs</code>로 변경시킨 것으로 역할은 Quarto 로 작업한 모든 결과물을 정정웹사이트로 컴파일하여 <code>docs</code> 디렉토리로 최종 결과물을 몰아넣게 된다. 나머지 <code>website</code> 아래 웹사이트 구조에 대한 사항을 지정하게 된다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>project<span class="sc">:</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>  type<span class="sc">:</span> website</span>
-<span id="cb2-3"><a href="#cb2-3"></a>  output<span class="sc">-</span>dir<span class="sc">:</span> docs</span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a>website<span class="sc">:</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>  title<span class="sc">:</span> <span class="st">"workshop"</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>  navbar<span class="sc">:</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>    left<span class="sc">:</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>      <span class="sc">-</span> href<span class="sc">:</span> index.qmd</span>
-<span id="cb2-10"><a href="#cb2-10"></a>        text<span class="sc">:</span> Home</span>
-<span id="cb2-11"><a href="#cb2-11"></a>      <span class="sc">-</span> about.qmd</span>
-<span id="cb2-12"><a href="#cb2-12"></a>      <span class="sc">-</span> setup.qmd      </span>
-<span id="cb2-13"><a href="#cb2-13"></a></span>
-<span id="cb2-14"><a href="#cb2-14"></a>format<span class="sc">:</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a>  html<span class="sc">:</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a>    theme<span class="sc">:</span> cosmo</span>
-<span id="cb2-17"><a href="#cb2-17"></a>    css<span class="sc">:</span> styles.css</span>
-<span id="cb2-18"><a href="#cb2-18"></a>    toc<span class="sc">:</span> true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>project<span class="sc">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  type<span class="sc">:</span> website</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">-</span>dir<span class="sc">:</span> docs</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>website<span class="sc">:</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  title<span class="sc">:</span> <span class="st">"workshop"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  navbar<span class="sc">:</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    left<span class="sc">:</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> href<span class="sc">:</span> index.qmd</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        text<span class="sc">:</span> Home</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> about.qmd</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> setup.qmd      </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span> cosmo</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    css<span class="sc">:</span> styles.css</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="quarto-render" class="level2">
 <h2 class="anchored" data-anchor-id="quarto-render"><code>quarto render</code></h2>
+<p><code>_quarto.yml</code>은 콘텐츠 즉 <code>.qmd</code>파일을 어떤 형태로 꿰어야 되는지 지정한 정보를 담고 있다면 <code>quarto render</code> 명령어 그 이전에 <code>quarto preview</code> 명령어는 개발자나 저작자가 저작한 저작물을 기계가 컴파일하는 과정을 담고 있다. 윈도우의 경우 <code>quarto.cmd</code> 맥/리눅스는 <code>quarto</code> 명령어로 해당 작업을 수행하게 된다.</p>
+<p><img src="image/quarto_init.png" class="img-fluid"></p>
+<p>상기 컴파일 작업을 통해 <code>docs</code> 디렉토리가 새로 생겼으며 정적 웹사이트를 기계인식 가능한 형태로 변환된 것을 확인할 수 있다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> quarto.cmd render</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -298,49 +313,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="at">$ rm -rf _site</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>로컬에서 <code>docs/</code> 디렉토리로 들어가서 <code>index.html</code> 파일을 더블클릭하게 되면 웹브라이져 크롬에서 웹사이트가 정상 제작된 것을 확인할 수 있다. 이제 로컬 컴퓨터에서 제작한 웹사이트를 본인 뿐만 아니라 인터넷 접속이 가능한 다른 분들도 데이터 과학 결과물을 공유할 수 있도록 외부에 배포하는 과정을 살펴보자.</p>
+<p><img src="image/quarto_hello_world.png" class="img-fluid"></p>
 </section>
 </section>
-<section id="로컬-git-과-원격-github-연결" class="level1">
-<h1>로컬 Git 과 원격 GitHub 연결</h1>
-<p>로컬 컴퓨터에서 작업을 한 후 <code>git add .</code> → <code>git commit -m"첫 커밋"</code> Git 작업흐름에 맞춰 작업을 한 후에 프라이빗 사설 저장소의 경우 PAT(Personal Assess Token) 을 사용해서 다음 명령어로 연결하는 하고 그렇지 않고 공공 퍼블릭으로 설정한 경우 다음 명령</p>
+<section id="git-과-github-저장소" class="level1">
+<h1>Git 과 GitHub 저장소</h1>
+<p>로컬에서 작업한 결과물을 인터넷으로 공유하는 방식은 여러가지가 존재하지만, 서버 없이(비용없이 무료) GitHub 에서 제공하는 <code>Pages</code> 기능을 사용하여 웹사이트를 제작하여 배포하는 방법을 살펴보자.</p>
+<section id="github-저장소" class="level2">
+<h2 class="anchored" data-anchor-id="github-저장소">GitHub 저장소</h2>
+<p><a href="https://github.com/">GitHub</a> 웹사이트에 회원가입하고 나면 저장소를 무료로 생성시킬 수 있다. 저장소 명칭, 저장소 공개범위(공개 혹은 비공개) 그리고 Git 브랜치 등 관련 사항을 개발 언어와 목적에 맞춰 취사선택한다.</p>
+<p><img src="image/github_repo.png" class="img-fluid"></p>
+</section>
+<section id="git" class="level2">
+<h2 class="anchored" data-anchor-id="git"><code>Git</code></h2>
+<p>로컬 컴퓨터에서 작업을 한 후 <code>git add .</code> → <code>git commit -m"첫 커밋"</code> Git 작업흐름에 맞춰 작업을 한 후에 프라이빗 사설 저장소의 경우 PAT(Personal Assess Token) 을 사용해서 다음 명령어로 연결하는 하고 그렇지 않고 공공 퍼블릭으로 설정한 경우 다음 명령어로 원격 GitHub 저장소를 연결한다.</p>
+<section id="로컬과-원격-연결" class="level3">
+<h3 class="anchored" data-anchor-id="로컬과-원격-연결">로컬과 원격 연결</h3>
+<p>로컬 컴퓨터에 있는 저장소를 원격 클라우드 컴퓨터 저장소와 연결시켜야 후속 작업을 진행할 수 있게 된다. 이를 위해서 먼저 로컬 저장소와 원격 저장소를 <code>git remote add origin</code> 명령어로 연결시킨다. <code>git remote -v</code> 명령어로 관련 사항을 확인한다.</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> git remote add origin git<span class="sc">@</span>github.com<span class="sc">:</span>bit2r<span class="sc">/</span>workshop.git</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> git remote <span class="sc">-</span>v</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>origin  git<span class="sc">@</span>github.com<span class="sc">:</span>bit2r<span class="sc">/</span><span class="fu">workshop.git</span> (fetch)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>origin  git<span class="sc">@</span>github.com<span class="sc">:</span>bit2r<span class="sc">/</span><span class="fu">workshop.git</span> (push)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>git remote add origin git@github.com:bit2r/workshop.git</code></p>
-<p>저장소와 로컬 저장소는 모두 각자 Git History가 달라 이를 합치하는 과정을 거쳐야 한다.</p>
 </section>
-<section id="원격-저장소-작업-내용-로컬-저장소로-가져오기" class="level1">
-<h1>원격 저장소 작업 내용 로컬 저장소로 가져오기</h1>
-<pre><code>git pull origin main --allow-unrelated-histories</code></pre>
+<section id="원격-저장소-가져오기" class="level3">
+<h3 class="anchored" data-anchor-id="원격-저장소-가져오기">원격 저장소 가져오기</h3>
+<p>로컬 저장소와 원격 저장소가 연결되었으면 다음 작업은 먼저 원격 저장소의 저작물을 로컬 컴퓨터로 끌어가져오는 과정을 거친다. 저장소와 로컬 저장소는 모두 각자 Git History가 달라 이를 합치하는 과정을 거쳐야 한다. 이때 <code>--allow-unrelated-histories</code> 옵션을 준다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> git pull origin main <span class="sc">--</span>allow<span class="sc">-</span>unrelated<span class="sc">-</span>histories</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>From github.com<span class="sc">:</span>bit2r<span class="sc">/</span>workshop</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">*</span> branch            main       <span class="ot">-&gt;</span> FETCH_HEAD</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="로컬-작업-내용-충돌conflict-해소-후-원격저장소로-내보내기" class="level1">
-<h1>로컬 작업 내용 충돌(conflict) 해소 후 원격저장소로 내보내기</h1>
-<pre><code>git push --set-upstream origin main</code></pre>
+<section id="원격-저장소-내보내기" class="level3">
+<h3 class="anchored" data-anchor-id="원격-저장소-내보내기">원격 저장소 내보내기</h3>
+<p>원격 저장소를 연결했고 원격 저장소와 로컬 저장소 관련 충돌(conflict) 과정을 해소했기 때문에 원격 저장소아 로컬 조장소 동기화에 필요한 모든 준비가 마무리되었기 때문에 다음 단계로 <code>git push</code> 명령어로 로컬 저장소 결과물을 원격 저장소로 내보낸다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> git push <span class="sc">--</span>set<span class="sc">-</span>upstream origin main</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Everything up<span class="sc">-</span>to<span class="sc">-</span>date</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Branch <span class="st">'main'</span> set up to track remote branch <span class="st">'main'</span> from <span class="st">'origin'</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="로컬-작업-내용-충돌conflict-해소-후-원격저장소로-내보내기-1" class="level1">
-<h1>로컬 작업 내용 충돌(conflict) 해소 후 원격저장소로 내보내기</h1>
-<pre><code>$ git pull origin main --allow-unrelated-histories
-From github.com:bit2r/workshop
- * branch            main       -&gt; FETCH_HEAD
-
-statkclee@PC-AT-HOME MINGW64 /c/code_states/workshop (main)
-$ git remote
-origin
-
-$ git remote -v
-origin  git@github.com:bit2r/workshop.git (fetch)
-origin  git@github.com:bit2r/workshop.git (push)
-
-$ git push --set-upstream origin main
-Everything up-to-date
-Branch 'main' set up to track remote branch 'main' from 'origin'.</code></pre>
+</section>
 </section>
 <section id="github-pages-설정" class="level1">
 <h1>GitHub Pages 설정</h1>
+<p>GitHub Pages를 활성화시켜 정적 웹사이트로 GitHub 저장소를 탈바꿈시킨다. 이를 위해서 해당 GitHub 저장소에서 <code>Settings</code> → <code>Pages</code> → <code>Branch</code>에서 <code>docs/</code> 디렉토리를 지정한다.</p>
 <p><img src="image/github_pages.png" class="img-fluid"></p>
 </section>
 <section id="quarto-웹사이트" class="level1">
 <h1><code>quarto</code> 웹사이트</h1>
+<p>GitHub 저장소 명칭을 <code>workshop</code>으로 해서 해당 웹사이트에 정상적으로 배포된 것을 크롬 웹브라우저에서 확인할 수 있다.</p>
 <p><img src="image/quarto_website_deployment.png" class="img-fluid"></p>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
